@@ -8,6 +8,27 @@
     <title>Kundvagn</title>
 </head>
 <body>
+
+    <!-- kundvagnen -->
     <h2>Kundvagn</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Produkt:</th>
+                <th>Pris:</th>
+                <th>Antal:</th>
+                <th>Summa:</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items">
+            <tfoot>
+                <tr>
+                    <td colspan="3">Summa:</td>
+                    <td id="cart-total">Sek:</td>
+                </tr>
+            </tfoot>
+        </tbody>
+    </table>
+    <button onclick()="emptyCart()">Töm kundvagn</button>
 </body>
 </html>
