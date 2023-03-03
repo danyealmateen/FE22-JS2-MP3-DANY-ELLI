@@ -8,18 +8,18 @@ function addToCart(product, price, quantity) {
   updateCart();
 }
 
-// Update shopping cart table and total
+// uppdaterar kundvagnen
 function updateCart() {
   let cartItems = document.getElementById("cart-items");
   let cartTotal = document.getElementById("cart-total");
   let total = 0;
   
-  // Clear current cart items
+  // tömmer nuvarande produkter
   while (cartItems.firstChild) {
     cartItems.removeChild(cartItems.firstChild);
   }
   
-  // Add updated cart items
+  // Lägger till produkter
   cart.forEach(item => {
     let row = document.createElement("tr");
     let productCell = document.createElement("td");
@@ -27,10 +27,11 @@ function updateCart() {
     let quantityCell = document.createElement("td");
     let totalCell = document.createElement("td");
     
-    productCell.textContent = item.product;
-    priceCell.textContent = "$" + item.price;
-    quantityCell.textContent = item.quantity;
-    totalCell.textContent = "$" + item.price * item.quantity;
+    productCell.innerText = item.product;
+    priceCell.innerText = "SEK " + item.price;
+    quantityCell.innerText = item.quantity;
+    quantityCell.style.textAlign = "center";
+    totalCell.innerText = "SEK " + item.price * item.quantity;
     
     row.appendChild(productCell);
     row.appendChild(priceCell);
@@ -42,11 +43,11 @@ function updateCart() {
     total += item.price * item.quantity;
   });
   
-  // Update cart total
-  cartTotal.textContent = "$" + total;
+  // uppdaterar hela kundvagnen
+  cartTotal.innerText = "SEK " + total;
 }
 
-// Empty shopping cart
+// tömmer hela kundvagnen
 function emptyCart() {
   cart = [];
   updateCart();
