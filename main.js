@@ -1,14 +1,16 @@
 const url = `https://della-311b1-default-rtdb.europe-west1.firebasedatabase.app/.json`;
+let cartItems = JSON.parse(localStorage.getItem("cartItems"));
+console.log(cartItems);
 let productArray = [];
 let itemToCartArray = [];
 let itemsInCart = 0;
 
 //Products
-let candy = { name: "skittles", price: 10, stock: 1, url: "blabla", id: 1 };
-let chips = { name: "estrella", price: 15, stock: 2, url: "blabla", id: 2 };
-let cookie = { name: "marabou", price: 20, stock: 3, url: "blabla", id: 3 };
-let gum = { name: "stimerol", price: 25, stock: 4, url: "blabla", id: 4 };
-let soda = { name: "pepsi", price: 30, stock: 5, url: "blabla", id: 5 };
+let candy = { name: "skittles", price: 10, stock: 1, url: "blabla" };
+let chips = { name: "estrella", price: 10, stock: 1, url: "blabla" };
+let cookie = { name: "marabou", price: 10, stock: 1, url: "blabla" };
+let gum = { name: "stimerol", price: 10, stock: 1, url: "blabla" };
+let soda = { name: "pepsi", price: 10, stock: 1, url: "blabla" };
 
 //Cards pushed into the array
 productArray.push(candy);
@@ -37,40 +39,40 @@ candyBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
   itemToCartArray.push(candy);
-  console.log(itemToCartArray);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+  candyBtn.disabled = true;
 });
 
 chipsBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
   itemToCartArray.push(chips);
-  console.log(itemToCartArray);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+  chipsBtn.disabled = true;
 });
 
 cookieBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
   itemToCartArray.push(cookie);
-  console.log(itemToCartArray);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+  cookieBtn.disabled = true;
 });
 
 gumBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
   itemToCartArray.push(gum);
-  console.log(itemToCartArray);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+  gumBtn.disabled = true;
 });
 
 sodaBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
   itemToCartArray.push(soda);
-  console.log(itemToCartArray);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+  sodaBtn.disabled = true;
 });
 
 //Post products
