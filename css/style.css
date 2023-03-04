@@ -1,0 +1,22 @@
+body {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+img {
+  width: 50px;
+  margin: auto;
+}
+
+#productCards {
+  margin: auto;
+}
+
+#candyCard,
+#chipsCard,
+#cookieCard,
+#gumCard,
+#sodaCard {
+  border: 3px solid black;
+  margin-top: 50px;
+  background-color: rgb(247, 240, 240);
+}
