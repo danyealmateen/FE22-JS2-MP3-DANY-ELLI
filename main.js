@@ -1,7 +1,9 @@
 const url = `https://della-311b1-default-rtdb.europe-west1.firebasedatabase.app/.json`;
 let itemsInCart = 0;
+let cart = [];
 
 //Cards
+const itemCounter = document.getElementById("itemCounter");
 const productCard = document.getElementById("productCard");
 const candyCard = document.getElementById("candyCard");
 const chipsCard = document.getElementById("chipsCard");
@@ -75,22 +77,37 @@ async function getProducts() {
   //Eventlisteners
   candyBtn.addEventListener("click", () => {
     itemsInCart++;
+    itemCounter.innerText = `${itemsInCart}`;
+    cart.push(arrayObj[0].candy);
+    console.log(cart);
   });
 
   chipsBtn.addEventListener("click", () => {
     itemsInCart++;
+    itemCounter.innerText = `${itemsInCart}`;
+    cart.push(arrayObj[0].chips);
+    console.log(cart);
   });
 
   cookieBtn.addEventListener("click", () => {
     itemsInCart++;
+    itemCounter.innerText = `${itemsInCart}`;
+    cart.push(arrayObj[0].cookie);
+    console.log(cart);
   });
 
   gumBtn.addEventListener("click", () => {
     itemsInCart++;
+    itemCounter.innerText = `${itemsInCart}`;
+    cart.push(arrayObj[0].gum);
+    console.log(cart);
   });
 
   sodaBtn.addEventListener("click", () => {
     itemsInCart++;
+    itemCounter.innerText = `${itemsInCart}`;
+    cart.push(arrayObj[0].soda);
+    console.log(cart);
   });
 }
 getProducts();
