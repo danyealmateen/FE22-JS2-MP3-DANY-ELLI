@@ -1,48 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/kundvagn.js"></script>
-    <title>Kundvagn</title>
-</head>
-<body>
-
-    <!-- Produkt 1 -->
-    <h2>Produkt 1</h2>
-    <p>Pris: 100 SEK</p>
-    <label for="product1-quantity">Antal:</label>
-    <input type="number" id="product1-quantity" value="0" min="0">
-    <button onclick="addToCart('Product 1', 10, parseInt(document.getElementById('product1-quantity').value))">Lägg i kundkorgen</button>
-    
-    <!-- Produkt 2 -->
-    <h2>Produkt 2</h2>
-    <p>Pris: 200 SEK</p>
-    <label for="product2-quantity">Antal:</label>
-    <input type="number" id="product2-quantity" value="0" min="0">
-    <button onclick="addToCart('Product 2', 20, parseInt(document.getElementById('product2-quantity').value))">Lägg i kundkorgen</button>
-    
-    <!-- kundvagnen -->
-    <h2>Kundvagn</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Produkt</th>
-                <th>Pris</th>
-                <th>Antal</th>
-                <th>Summa</th>
-            </tr>
-        </thead>
-        <tbody id="cart-items">
-            <tfoot>
-                <tr>
-                    <td colspan="3">Summa:</td>
-                    <td id="cart-total">Sek:</td>
-                </tr>
-            </tfoot>
-        </tbody>
-    </table>
-    <button onclick="emptyCart()">Töm kundvagn</button>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/kundvagn.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="emptyButton">Empty</button>
+  </body>
 </html>

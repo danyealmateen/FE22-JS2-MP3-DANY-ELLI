@@ -1,7 +1,6 @@
 const url = `https://della-311b1-default-rtdb.europe-west1.firebasedatabase.app/.json`;
 let productArray = [];
-postCart();
-getProducts();
+let itemToCartArray = [];
 let itemsInCart = 0;
 
 //Products
@@ -34,86 +33,48 @@ const cookieBtn = document.getElementById("cookieBtn");
 const gumBtn = document.getElementById("gumBtn");
 const sodaBtn = document.getElementById("sodaBtn");
 
-candyCard.innerHTML = `
-${productArray[0].name}<br>
-${productArray[0].price}<br>
-${productArray[0].stock}<br>
-${productArray[0].url}<br>
-`;
+candyBtn.addEventListener("click", () => {
+  itemsInCart++;
+  itemCounter.innerHTML = `${itemsInCart}`;
+  itemToCartArray.push(candy);
+  console.log(itemToCartArray);
+  localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+});
 
-chipsCard.innerHTML = `
-${productArray[1].name}<br>
-${productArray[1].price}<br>
-${productArray[1].stock}<br>
-${productArray[1].url}<br>
-`;
+chipsBtn.addEventListener("click", () => {
+  itemsInCart++;
+  itemCounter.innerHTML = `${itemsInCart}`;
+  itemToCartArray.push(chips);
+  console.log(itemToCartArray);
+  localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+});
 
-cookieCard.innerHTML = `
-${productArray[2].name}<br>
-${productArray[2].price}<br>
-${productArray[2].stock}<br>
-${productArray[2].url}<br>
-`;
+cookieBtn.addEventListener("click", () => {
+  itemsInCart++;
+  itemCounter.innerHTML = `${itemsInCart}`;
+  itemToCartArray.push(cookie);
+  console.log(itemToCartArray);
+  localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+});
 
-gumCard.innerHTML = `
-${productArray[3].name}<br>
-${productArray[3].price}<br>
-${productArray[3].stock}<br>
-${productArray[3].url}<br>
-`;
+gumBtn.addEventListener("click", () => {
+  itemsInCart++;
+  itemCounter.innerHTML = `${itemsInCart}`;
+  itemToCartArray.push(gum);
+  console.log(itemToCartArray);
+  localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+});
 
-sodaCard.innerHTML = `
-${productArray[4].name}<br>
-${productArray[4].price}<br>
-${productArray[4].stock}<br>
-${productArray[4].url}<br>
-`;
+sodaBtn.addEventListener("click", () => {
+  itemsInCart++;
+  itemCounter.innerHTML = `${itemsInCart}`;
+  itemToCartArray.push(soda);
+  console.log(itemToCartArray);
+  localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
+});
 
-//GetProducts
-async function getProducts() {
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(data);
-
-  //Eventlisteners
-  candyBtn.addEventListener("click", () => {
-    itemsInCart++;
-    itemCounter.innerText = `${itemsInCart}`;
-    cart.push(arrayObj[0].candy);
-    console.log(cart);
-  });
-
-  chipsBtn.addEventListener("click", () => {
-    itemsInCart++;
-    itemCounter.innerText = `${itemsInCart}`;
-    cart.push(arrayObj[0].chips);
-    console.log(cart);
-  });
-
-  cookieBtn.addEventListener("click", () => {
-    itemsInCart++;
-    itemCounter.innerText = `${itemsInCart}`;
-    cart.push(arrayObj[0].cookie);
-    console.log(cart);
-  });
-
-  gumBtn.addEventListener("click", () => {
-    itemsInCart++;
-    itemCounter.innerText = `${itemsInCart}`;
-    cart.push(arrayObj[0].gum);
-    console.log(cart);
-  });
-
-  sodaBtn.addEventListener("click", () => {
-    itemsInCart++;
-    itemCounter.innerText = `${itemsInCart}`;
-    cart.push(arrayObj[0].soda);
-    console.log(cart);
-  });
-}
-
-// // Post the cart with snacks to FB
-async function postCart() {
+//Post products
+async function postProducts() {
   const init = {
     method: "PUT",
     body: JSON.stringify(productArray),
@@ -125,3 +86,41 @@ async function postCart() {
   const response = await fetch(url, init);
   const data = await response.json();
 }
+postProducts();
+
+//Get products
+async function getProducts() {
+  const response = await fetch(url);
+  const data = await response.json();
+
+  candyCard.innerHTML = `
+  ${data[0].name} 
+  ${data[0].price} 
+  ${data[0].stock}
+  ${data[0].url}`;
+
+  chipsCard.innerHTML = `
+  ${data[1].name} 
+  ${data[1].price} 
+  ${data[1].stock}
+  ${data[1].url}`;
+
+  cookieCard.innerHTML = `
+  ${data[2].name} 
+  ${data[2].price} 
+  ${data[2].stock}
+  ${data[2].url}`;
+
+  gumCard.innerHTML = `
+  ${data[3].name} 
+  ${data[3].price} 
+  ${data[3].stock}
+  ${data[3].url}`;
+
+  sodaCard.innerHTML = `
+  ${data[4].name} 
+  ${data[4].price} 
+  ${data[4].stock}
+  ${data[4].url}`;
+}
+getProducts();
