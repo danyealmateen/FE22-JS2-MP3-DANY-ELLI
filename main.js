@@ -8,6 +8,13 @@ let itemToCartArray = [];
 const itemCounter = document.getElementById("itemCounter");
 let itemsInCart = 0;
 
+//How many products of each product the user wants to buy
+const amountOfCandy = document.getElementById('candyAmount');
+const amountOfChips = document.getElementById('chipsAmount');
+const amountOfCookie = document.getElementById('cookieAmount');
+const amountOfGum = document.getElementById('gumAmount');
+const amountOfSoda = document.getElementById('sodaAmount');
+
 //Checking if cart is empty or not and displaying items in the cart from the last session.
 if (cartItems !== null) {
   cartItems.forEach((item) => {
@@ -60,12 +67,14 @@ checkAndDisableCandyBtn();
 candyBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
+  amountOfCandy.innerText +=1;//Adds how many of the product in the DOm
   itemToCartArray.push(candy);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
   candyBtn.disabled = true;
   candy.stock -= 1;
   localStorage.setItem("candyStock", candy.stock);
   updateStock(0, candy.stock);
+  
 });
 checkAndDisableCandyBtn();
 
@@ -73,6 +82,7 @@ checkAndDisableChipsBtn();
 chipsBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
+  amountOfChips.innerText +=1;//Adds how many of the product in the DOm
   itemToCartArray.push(chips);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
   chipsBtn.disabled = true;
@@ -86,6 +96,7 @@ checkAndDisableCookieBtn();
 cookieBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
+  amountOfCookie.innerText +=1;//Adds how many of the product in the DOm
   itemToCartArray.push(cookie);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
   cookieBtn.disabled = true;
@@ -99,6 +110,7 @@ checkAndDisableGumBtn();
 gumBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
+  amountOfGum.innerText +=1;//Adds how many of the product in the DOm
   itemToCartArray.push(gum);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
   gumBtn.disabled = true;
@@ -112,6 +124,7 @@ checkAndDisableSodaBtn();
 sodaBtn.addEventListener("click", () => {
   itemsInCart++;
   itemCounter.innerHTML = `${itemsInCart}`;
+  amountOfSoda.innerText +=1;
   itemToCartArray.push(soda);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
   sodaBtn.disabled = true;

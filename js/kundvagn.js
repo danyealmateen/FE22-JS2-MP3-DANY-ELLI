@@ -1,5 +1,9 @@
+
+
 let cartItems = JSON.parse(localStorage.getItem("cartItems"));
 let itemsInCart = 0;
+
+
 
 
 console.log(cartItems);
@@ -26,4 +30,29 @@ if (cartItems !== null) {
 }
 
 
+// Function to calculate the total price of items in the cart
+function calculateTotalPrice() {
+  let cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  let totalPrice = 0;
 
+  if (cartItems !== null) {
+    cartItems.forEach((item) => {
+      totalPrice += item.price;
+    });
+  }
+  return totalPrice;
+}
+
+// Example usage:
+let total = calculateTotalPrice();
+console.log(total);
+
+//Complete the purchase
+let completePurchase = document.getElementById("buyButton");
+completePurchase.addEventListener("click", () => {
+  document.getElementById('itemCounter').innerText = "Purchase completed successfully!";
+  localStorage.clear(cartItems);
+  console.log(cartItems);
+});
+
+console.log(cartItems);
