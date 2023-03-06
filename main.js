@@ -1,6 +1,7 @@
 import anime from "/node_modules/animejs/lib/anime.es.js";
-import underscore from "./node_modules/underscore/underscore-esm.js";
-import bootstrap from "./node_modules/bootstrap/dist/js/bootstrap.esm.js";
+import _ from "/node_modules/underscore/underscore-esm.js";
+
+
 
 const url = `https://della-311b1-default-rtdb.europe-west1.firebasedatabase.app/.json`;
 getProducts();
@@ -10,6 +11,8 @@ let productArray = [];
 let itemToCartArray = [];
 const itemCounter = document.getElementById("itemCounter");
 let itemsInCart = 0;
+const errorMessage = document.getElementById('errorMessage');
+
 
 //How many products of each product the user wants to buy
 const amountOfCandy = document.getElementById("candyAmount");
@@ -78,6 +81,9 @@ productArray.push(chips);
 productArray.push(cookie);
 productArray.push(gum);
 productArray.push(soda);
+
+//Sort products in alphabeticaly order
+productArray = _.sortBy(productArray, 'name');
 
 //Cards
 const productCard = document.getElementById("productCard");
@@ -191,38 +197,45 @@ postProducts();
 
 //Get products
 async function getProducts() {
-  const response = await fetch(url);
-  const data = await response.json();
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
 
-  candyCard.innerHTML = `
+    candyCard.innerHTML = `
   ${data[0].name} 
   ${data[0].price} 
   ${data[0].stock}
   <img id="url" src="${data[0].url}" />`;
 
-  chipsCard.innerHTML = `
+    chipsCard.innerHTML = `
   ${data[1].name} 
   ${data[1].price} 
   ${data[1].stock}
   <img id="url" src="${data[1].url}" />`;
 
-  cookieCard.innerHTML = `
+    cookieCard.innerHTML = `
   ${data[2].name} 
   ${data[2].price} 
   ${data[2].stock}
   <img id="url" src="${data[2].url}" />`;
 
-  gumCard.innerHTML = `
+    gumCard.innerHTML = `
   ${data[3].name} 
   ${data[3].price} 
   ${data[3].stock}
   <img id="url" src="${data[3].url}" />`;
 
-  sodaCard.innerHTML = `
+    sodaCard.innerHTML = `
   ${data[4].name} 
   ${data[4].price} 
   ${data[4].stock}
   <img id="url" src="${data[4].url}" />`;
+  }
+  catch(error){
+    console.log("Connection problem");
+    errorMessage.innerText = `CONNECTION PROBLEMS`;
+  
+  }
 }
 
 async function updateStock(product, newStock) {
