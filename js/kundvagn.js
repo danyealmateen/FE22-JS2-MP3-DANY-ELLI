@@ -1,23 +1,49 @@
-
-
 let cartItems = JSON.parse(localStorage.getItem("cartItems"));
+console.log(cartItems);
 let itemsInCart = 0;
 let completePurchase = document.getElementById("buyButton");
+let homeBtn = document.getElementById("homeBtn");
+let totalPriceElement = document.getElementById("totalPrice");
 
+//Rendering divs for the products
+let items = document.getElementById("items");
 
-console.log(cartItems);
+if (cartItems !== null) {
+  cartItems.forEach((item) => {
+    items.innerHTML += `
+    <br>
+    ${item.name}
+    ${item.price}kr
+    <img src="${item.url}"/>`;
+  });
+} else {
+  console.log("inga items i carten");
+}
 
 let emptyButton = document.getElementById("emptyButton");
 emptyButton.addEventListener("click", () => {
-  document.getElementById('itemCounter').innerText = "Items in cart: " + 0;
-  localStorage.clear(cartItems);
-  console.log(cartItems);
-  // Set the total price to 0
-  let totalPriceElement = document.getElementById("totalPrice");
-  totalPriceElement.innerText = "0.00";
-});
+  if (cartItems == null) {
+    document.getElementById("itemCounter").innerText =
+      "Your cart is ALREADY empty!";
+  } else {
+    cartItems.forEach((item) => {
+      console.log(item);
+      item.stock = 1;
+      console.log("uppdaterat stocken");
+    });
 
-console.log(cartItems);
+    items.innerText = "no products in the cart";
+    totalPrice.innerText = "";
+    document.getElementById("itemCounter").innerText = "Your cart is emptied!";
+    localStorage.clear(cartItems);
+  }
+
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      location.reload();
+    }
+  };
+});
 
 //Checking if cart is empty or not and displaying items in the cart from the last session.
 if (cartItems !== null) {
@@ -31,7 +57,6 @@ if (cartItems !== null) {
   });
 }
 
-
 // Function to calculate the total price of items in the cart
 function calculateTotalPrice() {
   let cartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -43,23 +68,27 @@ function calculateTotalPrice() {
     });
   }
   // Update the DOM with the total price
-  let totalPriceElement = document.getElementById("totalPrice");
+
   totalPriceElement.textContent = totalPrice.toFixed(2); // Format the price to 2 decimal places
   return totalPrice;
 }
 
 //Call the method
 let total = calculateTotalPrice();
-console.log(total);
 
-//Complete the purchase
-completePurchase.addEventListener("click", () => {
-  document.getElementById('itemCounter').innerText = "Purchase completed successfully!";
-  localStorage.clear(cartItems);
-  console.log(cartItems);
-  // Set the total price to 0
-  let totalPriceElement = document.getElementById("totalPrice");
-  totalPriceElement.innerText = "0.00";
+purchaseBtn.addEventListener("click", () => {
+  if (cartItems === null) {
+    document.getElementById("itemCounter").innerText = "Your cart is empty!";
+    localStorage.clear(cartItems);
+  } else {
+    document.getElementById("itemCounter").innerText =
+      "Purchase completed successfully!";
+    localStorage.clear(cartItems);
+  }
+
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      location.reload();
+    }
+  };
 });
-
-console.log(cartItems);

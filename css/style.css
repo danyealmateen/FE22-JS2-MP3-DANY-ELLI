@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 img {
@@ -19,4 +19,9 @@ img {
   border: 3px solid black;
   margin-top: 50px;
   background-color: rgb(247, 240, 240);
+}
+
+#items {
+  border: 3px solid black;
+  margin: 30px;
 }

@@ -6,21 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
     <script src="/js/kundvagn.js" defer></script>
-    
+
     <title>Kundvagn</title>
   </head>
   <body>
     <h1>Välkommen till Dany och Elis habibi kiosk</h1>
-    <button id="emptyButton">Empty</button>
+
+    <div id="items">
+      <div id="candyItem"></div>
+      <div id="chipsItem"></div>
+      <div id="cookieItem"></div>
+      <div id="gumItem"></div>
+      <div id="sodaItem"></div>
+    </div>
+
+    <button id="emptyButton">EMPTY CART</button>
     <div id="addToCartDiv">
       <h1 id="itemCounter">Items in cart:</h1>
-      
+
       <a href="/html/kundvagn.html"
         ><img src="https://cdn-icons-png.flaticon.com/512/70/70021.png"
       /></a>
     </div>
     <h2 id="cartList"></h2>
     <h2 id="totalPrice"></h2>
-    <button id="buyButton">Complete Purchase</button>
+    <!-- <button id="buyButton">Complete Purchase</button> -->
+    <a href="/index.html">
+      <button id="purchaseBtn">COMPLETE PURCHASE</button>
+    </a>
   </body>
 </html>
