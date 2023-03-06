@@ -66,7 +66,8 @@ const sodaBtn = document.getElementById("sodaBtn");
 checkAndDisableCandyBtn();
 candyBtn.addEventListener("click", () => {
   itemsInCart++;
-  itemCounter.innerHTML = `${itemsInCart}`;
+  // itemCounter.innerHTML = `${itemsInCart}`;
+  itemCounter.innerText= `Items in cart: ${itemsInCart}`;
   amountOfCandy.innerText +=1;//Adds how many of the product in the DOm
   itemToCartArray.push(candy);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
@@ -81,7 +82,8 @@ checkAndDisableCandyBtn();
 checkAndDisableChipsBtn();
 chipsBtn.addEventListener("click", () => {
   itemsInCart++;
-  itemCounter.innerHTML = `${itemsInCart}`;
+  // itemCounter.innerHTML = `${itemsInCart}`;
+  itemCounter.innerText= `Items in cart: ${itemsInCart}`;
   amountOfChips.innerText +=1;//Adds how many of the product in the DOm
   itemToCartArray.push(chips);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
@@ -95,7 +97,8 @@ checkAndDisableChipsBtn();
 checkAndDisableCookieBtn();
 cookieBtn.addEventListener("click", () => {
   itemsInCart++;
-  itemCounter.innerHTML = `${itemsInCart}`;
+  // itemCounter.innerHTML = `${itemsInCart}`;
+  itemCounter.innerText= `Items in cart: ${itemsInCart}`;
   amountOfCookie.innerText +=1;//Adds how many of the product in the DOm
   itemToCartArray.push(cookie);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
@@ -109,7 +112,8 @@ checkAndDisableCookieBtn();
 checkAndDisableGumBtn();
 gumBtn.addEventListener("click", () => {
   itemsInCart++;
-  itemCounter.innerHTML = `${itemsInCart}`;
+  // itemCounter.innerHTML = `${itemsInCart}`;
+  itemCounter.innerText= `Items in cart: ${itemsInCart}`;
   amountOfGum.innerText +=1;//Adds how many of the product in the DOm
   itemToCartArray.push(gum);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));
@@ -123,7 +127,8 @@ checkAndDisableGumBtn();
 checkAndDisableSodaBtn();
 sodaBtn.addEventListener("click", () => {
   itemsInCart++;
-  itemCounter.innerHTML = `${itemsInCart}`;
+  // itemCounter.innerHTML = `${itemsInCart}`;
+  itemCounter.innerText= `Items in cart: ${itemsInCart}`;
   amountOfSoda.innerText +=1;
   itemToCartArray.push(soda);
   localStorage.setItem("cartItems", JSON.stringify(itemToCartArray));

@@ -10,9 +10,12 @@ console.log(cartItems);
 
 let emptyButton = document.getElementById("emptyButton");
 emptyButton.addEventListener("click", () => {
-  document.getElementById('itemCounter').innerText = "Items in cart: "+ 0;
+  document.getElementById('itemCounter').innerText = "Items in cart: " + 0;
   localStorage.clear(cartItems);
   console.log(cartItems);
+  // Set the total price to 0
+  let totalPriceElement = document.getElementById("totalPrice");
+  totalPriceElement.innerText = "0.00";
 });
 
 console.log(cartItems);
@@ -40,6 +43,10 @@ function calculateTotalPrice() {
       totalPrice += item.price;
     });
   }
+
+  // Update the DOM with the total price
+  let totalPriceElement = document.getElementById("totalPrice");
+  totalPriceElement.textContent = totalPrice.toFixed(2); // Format the price to 2 decimal places
   return totalPrice;
 }
 
@@ -53,6 +60,10 @@ completePurchase.addEventListener("click", () => {
   document.getElementById('itemCounter').innerText = "Purchase completed successfully!";
   localStorage.clear(cartItems);
   console.log(cartItems);
+
+  // Set the total price to 0
+  let totalPriceElement = document.getElementById("totalPrice");
+  totalPriceElement.innerText = "0.00";
 });
 
 console.log(cartItems);
