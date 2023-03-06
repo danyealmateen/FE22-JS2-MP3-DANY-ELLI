@@ -2,8 +2,7 @@
 
 let cartItems = JSON.parse(localStorage.getItem("cartItems"));
 let itemsInCart = 0;
-
-
+let completePurchase = document.getElementById("buyButton");
 
 
 console.log(cartItems);
@@ -43,24 +42,21 @@ function calculateTotalPrice() {
       totalPrice += item.price;
     });
   }
-
   // Update the DOM with the total price
   let totalPriceElement = document.getElementById("totalPrice");
   totalPriceElement.textContent = totalPrice.toFixed(2); // Format the price to 2 decimal places
   return totalPrice;
 }
 
-// Example usage:
+//Call the method
 let total = calculateTotalPrice();
 console.log(total);
 
 //Complete the purchase
-let completePurchase = document.getElementById("buyButton");
 completePurchase.addEventListener("click", () => {
   document.getElementById('itemCounter').innerText = "Purchase completed successfully!";
   localStorage.clear(cartItems);
   console.log(cartItems);
-
   // Set the total price to 0
   let totalPriceElement = document.getElementById("totalPrice");
   totalPriceElement.innerText = "0.00";
