@@ -1,5 +1,6 @@
 import anime from "/node_modules/animejs/lib/anime.es.js";
 import underscore from "./node_modules/underscore/underscore-esm.js";
+import bootstrap from "./node_modules/bootstrap/dist/js/bootstrap.esm.js";
 
 const url = `https://della-311b1-default-rtdb.europe-west1.firebasedatabase.app/.json`;
 getProducts();
