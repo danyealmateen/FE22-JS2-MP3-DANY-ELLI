@@ -1,3 +1,6 @@
+import anime from "/node_modules/animejs/lib/anime.es.js";
+import underscore from "./node_modules/underscore/underscore-esm.js";
+
 const url = `https://della-311b1-default-rtdb.europe-west1.firebasedatabase.app/.json`;
 getProducts();
 let cartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -194,31 +197,31 @@ async function getProducts() {
   ${data[0].name} 
   ${data[0].price} 
   ${data[0].stock}
-  <img src="${data[0].url}" />`;
+  <img id="url" src="${data[0].url}" />`;
 
   chipsCard.innerHTML = `
   ${data[1].name} 
   ${data[1].price} 
   ${data[1].stock}
-  <img src="${data[1].url}" />`;
+  <img id="url" src="${data[1].url}" />`;
 
   cookieCard.innerHTML = `
   ${data[2].name} 
   ${data[2].price} 
   ${data[2].stock}
-  <img src="${data[2].url}" />`;
+  <img id="url" src="${data[2].url}" />`;
 
   gumCard.innerHTML = `
   ${data[3].name} 
   ${data[3].price} 
   ${data[3].stock}
-  <img src="${data[3].url}" />`;
+  <img id="url" src="${data[3].url}" />`;
 
   sodaCard.innerHTML = `
   ${data[4].name} 
   ${data[4].price} 
   ${data[4].stock}
-  <img src="${data[4].url}" />`;
+  <img id="url" src="${data[4].url}" />`;
 }
 
 async function updateStock(product, newStock) {
@@ -278,3 +281,9 @@ function checkAndDisableSodaBtn() {
 setTimeout(function () {
   getProducts();
 }, 100);
+
+anime({
+  targets: "div",
+  duration: 1000,
+  rotate: 360,
+});
